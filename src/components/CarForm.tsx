@@ -10,12 +10,11 @@ function CarForm() {
     const handleCostChange = (event) => {
         dispatch(addCost(Number(event.target.value) || 0))
     }
-    const name = useSelector((state) => {
-        return state.form.name
+    
+    const {name, cost} = useSelector((state) => {
+        return state.form
     })
-    const cost = useSelector((state) => {
-        return state.form.cost
-    })
+    
     return (
         <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2} component='form' justifyContent="center" >
