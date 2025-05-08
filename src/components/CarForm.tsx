@@ -1,36 +1,34 @@
 import { TextField, Grid, styled, Paper, Button, Box } from "@mui/material";
 import { addName, addCost } from "../store";
-import { UseSelector, useDispatch, useSelector } from "react-redux";
-// const Item = styled(Paper)(({ theme }) => ({
-//     backgroundColor: '#fff',
-//     ...theme.typography.body2,
-//     padding: theme.spacing(1),
-//     textAlign: 'center',
-//     color: (theme.vars ?? theme).palette.text.secondary,
-//     ...theme.applyStyles('dark', {
-//       backgroundColor: '#1A2027',
-//     }),
-//   }));
+import { useDispatch, useSelector } from "react-redux";
+
 function CarForm() {
     const dispatch = useDispatch()
-    const onNameChange = (event) => {
+    const handleNameChange = (event) => {
         dispatch(addName(event.target.value))
     }
+    const handleCostChange = (event) => {
+        dispatch(addCost(event.target.value))
+    }
+    const name = useSelector((state) => {
+        return state.form.name
+    })
+    const cost = useSelector((state) => {
+        return state.form.cost
+    })
     return (
         <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2} component='form' justifyContent="center">
                 <Grid size={{xs: 8, sm:6, md:4, lg: 3}}>
                     
                     <TextField 
-                    onChange={onNameChange}
+                    onChange={handleNameChange}
                     fullWidth
                     id="outlined-basic" 
                     label="Name" 
                     variant="outlined"
                     helperText="Please enter your car name"
-                    value={useSelector((state) => {
-                        return state.form.name
-                    })}
+                    value={name}
                     />
                     
                 </Grid>
@@ -38,11 +36,12 @@ function CarForm() {
                     
                     <TextField 
                     fullWidth
+                    onChange={handleCostChange}
                     id="outlined-basic" 
                     label="Cost" 
                     variant="outlined"
                     helperText="Please enter the cost of your car"
-                    value={0}
+                    value={cost || null }
                     />
                     
                 </Grid>
