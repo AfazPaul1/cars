@@ -8,7 +8,7 @@ function CarForm() {
         dispatch(addName(event.target.value))
     }
     const handleCostChange = (event) => {
-        dispatch(addCost(event.target.value))
+        dispatch(addCost(Number(event.target.value) || 0))
     }
     const name = useSelector((state) => {
         return state.form.name
@@ -18,7 +18,7 @@ function CarForm() {
     })
     return (
         <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2} component='form' justifyContent="center">
+        <Grid container spacing={2} component='form' justifyContent="center" >
                 <Grid size={{xs: 8, sm:6, md:4, lg: 3}}>
                     
                     <TextField 
