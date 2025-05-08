@@ -8,35 +8,5 @@ const store = configureStore({
     cars: carsReducer
    }
 })
-const startingState = store.getState()
-console.log(JSON.stringify(startingState))
-store.dispatch({
-    type:'form/addName',
-    payload:'Subaru'
-})
-
-store.dispatch({
-    type:'form/addCost',
-    payload:10000
-})
-
-store.dispatch({
-    type:'cars/addCar',
-    payload:{
-        name: 'nissan',
-        cost:7000
-    }
-})
-store.dispatch({
-    type:'cars/changeSearchTerm',
-    payload: 'subaru'
-})
-
-//idk how to test remove
-
- console.log(store)
-
-const finalState = store.getState()
- console.log(JSON.stringify(finalState))
 
 export {store, addName, addCost, changeSearchTerm, addCar, removeCar}

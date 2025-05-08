@@ -13,8 +13,6 @@ const carsSlice = createSlice({
         addCar: (state, action) => {
             state.cars.push({
                 id: nanoid(),
-                //ok how do i get access to the other states?
-                //access that state in the cmomponent and pass it as payload when dispatching
                 name: action.payload.name,
                 cost: action.payload.cost
             })    
