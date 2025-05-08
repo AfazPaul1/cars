@@ -21,7 +21,7 @@ function CarForm() {
     })
     
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box component="section" sx={{ p: 2, border: '1px dashed grey',  margin:2}}>
         <Grid container spacing={2} component='form' justifyContent="center" onSubmit={handleSubmit}>
                 <Grid size={{xs: 8, sm:6, md:4, lg: 3}}>
                     
