@@ -8,7 +8,13 @@ const carsSlice = createSlice({
     },
     reducers: {
         changeSearchTerm: (state, action) => {
-          state.searchTerm = action.payload;  
+          state.searchTerm = action.payload; 
+          state.carsList = state.carsList.filter((car) => {
+            if (!state.searchTerm) {
+                return true
+            }
+            return car.name.includes(state.searchTerm)
+          }) 
         },
         addCar: (state, action) => {
             state.carsList.push({
@@ -22,7 +28,8 @@ const carsSlice = createSlice({
                 return car.id !== action.payload 
             })
         }
-    }
+    },
+    
 })
 
 export const {changeSearchTerm, addCar, removeCar} = carsSlice.actions

@@ -13,8 +13,8 @@ function CarList() {
     }
     const renderedList = carsList.map((car) => {
         return (
-            <Paper sx={{p:1}} elevation={2}>
-            <Grid sx={{margin:2}} key={car.id} container spacing={2} justifyContent="center">
+            <Paper key={car.id} sx={{p:1}} elevation={2}>
+            <Grid sx={{margin:2}}  container spacing={2} justifyContent="center">
                 
                     <Grid  size={{xs: 8, sm:6, md:4, lg: 3}}  alignItems="center">
                         <Typography sx={{p:1}} fullWidth variant="body1" gutterBottom>
