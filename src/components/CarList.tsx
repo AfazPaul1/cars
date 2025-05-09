@@ -38,7 +38,7 @@ function CarList() {
     return (
         <div>
             {carsList.length!==0? 
-            <Box component="section" sx={{ p: 2, border: '1px dashed grey', margin:2 }}>
+            <Box component="section" sx={{ p: 2, margin:2 }}>
             {renderedList}
             </Box> : <div></div>}
         </div>

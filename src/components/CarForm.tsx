@@ -13,8 +13,6 @@ function CarForm() {
     const handleSubmit = (event) => {
         event.preventDefault()
         dispatch(addCar({name, cost}))
-        dispatch(addName(""))
-        dispatch(addCost(0))
     }
     const {name, cost} = useSelector((state) => {
         return state.form
