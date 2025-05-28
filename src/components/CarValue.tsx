@@ -1,11 +1,14 @@
- import { Grid, TextField, Typography } from "@mui/material"
+ import { Grid, Typography } from "@mui/material"
 import { useSelector } from "react-redux"
+import type { RootState } from '../store';
 function CarSearch() {
-    const sum = useSelector(({cars: {carsList, searchTerm}}) => 
-        carsList
-        .filter((car) => car.name.toLowerCase().includes(searchTerm.toLowerCase()))
-        .reduce((sum, car) => sum + car.cost, 0)
-    )
+    const sum = useSelector((state: RootState) => {
+        //cammot annotate type when we destructured in the function parameter
+        const {carsList, searchTerm} = state.cars;
+        return carsList
+                    .filter((car) => car.name.toLowerCase().includes(searchTerm.toLowerCase()))
+                    .reduce((sum, car) => sum + car.cost, 0)
+})
 
     return (
         <Grid container>

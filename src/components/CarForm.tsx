@@ -1,20 +1,20 @@
-import { TextField, Grid, styled, Paper, Button, Box } from "@mui/material";
+import { TextField, Grid, Button, Box } from "@mui/material";
 import { addName, addCost, addCar } from "../store";
 import { useDispatch, useSelector } from "react-redux";
-
+import type { RootState } from '../store';
 function CarForm() {
     const dispatch = useDispatch()
-    const handleNameChange = (event) => {
+    const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(addName(event.target.value))
     }
-    const handleCostChange = (event) => {
+    const handleCostChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(addCost(Number(event.target.value) || 0))
     }
-    const handleSubmit = (event) => {
+    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         dispatch(addCar({name, cost}))
     }
-    const {name, cost} = useSelector((state) => {
+    const {name, cost} = useSelector((state: RootState) => {
         return state.form
     })
     
