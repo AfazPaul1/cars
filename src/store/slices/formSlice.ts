@@ -1,22 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addCar } from "./CarsSlice";
+import { addCar } from "./carsSlice";
+import type { PayloadAction } from "@reduxjs/toolkit";
 
+interface FormState {
+    name: string,
+    cost: number
+}
+const initialState: FormState = {
+    name: "",
+    cost:0
+}
 const formSlice = createSlice({
     name: 'form',
-    initialState: {
-        name: '',
-        cost: 0
-    },
+    initialState,
     reducers: {
-        addName: (state, action) => {
+        addName: (state, action: PayloadAction<string>) => {
             state.name = action.payload;
         },
-        addCost: (state, action) => {
+        addCost: (state, action: PayloadAction<number>) => {
             state.cost = action.payload;
         }
     },
     extraReducers: (builder) => {
-        builder.addCase(addCar, (state, action) => {
+        builder.addCase(addCar, (state) => {
             state.name = ''
             state.cost=0
         })
